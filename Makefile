@@ -7,9 +7,9 @@
 
 ################################### ALIASES ####################################
 
-src = src/sorted_vector.cpp src/main.cpp
+src = src/main.cpp
 
-head = include/sorted_vector.hpp
+head = include/sorted_vector.hpp include/sorted_vector_implementation.hpp
 
 exec = build/sort.elf
 

@@ -19,8 +19,8 @@
 #include "sorted_vector.hpp"
 
 int main(int argc, char **argv) {
-	// Creating the SortedVector.
-	SortedVector sort_factory = SortedVector();
+	// Creating the SortedVector for the int class.
+	SortedVector<int> sort_factory = SortedVector<int>();
 
 	// Iterate over the command line arguments and add them to the
 	// SortedVector. We skip the first argument which is the name of the
