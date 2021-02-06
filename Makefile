@@ -9,7 +9,9 @@
 
 src = src/main.cpp
 
-head = include/sorted_vector.hpp include/sorted_vector_implementation.hpp
+head_insert = include/sorted_vector.hpp include/sorted_vector_implementation.hpp
+head_merge = include/merge_sorted_vector.hpp include/merge_sorted_vector_implementation.hpp
+head = $(head_insert) $(head_merge)
 
 exec = build/sort.elf
 
