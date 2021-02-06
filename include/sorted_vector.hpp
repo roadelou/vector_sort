@@ -28,8 +28,6 @@ template <typename Sortable> class SortedVector {
 		void insert(Sortable element);
 		// Get the size of the array.
 		size_t get_size(void);
-		// Remove an element from the array if possible.
-		void remove_or_skip(size_t index);
 		// Returns a frozen copy of the content of the array.
 		std::vector<Sortable> get_frozen(void);
 };

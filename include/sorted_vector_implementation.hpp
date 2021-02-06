@@ -44,6 +44,7 @@ template <typename Sortable> SortedVector<Sortable>::SortedVector(void) {
 	this->inner = new std::vector<Sortable>();
 }
 
+
 template <typename Sortable> void SortedVector<Sortable>::insert(Sortable element) {
 	// The iterator used to insert our element.
 	typename std::vector<Sortable>::iterator inner_iterator = this->inner->begin();
@@ -62,20 +63,6 @@ template <typename Sortable> void SortedVector<Sortable>::insert(Sortable elemen
 template <typename Sortable> size_t SortedVector<Sortable>::get_size(void) {
 	// Calling the appropriate std::vector function.
 	return this->inner->size();
-}
-
-
-template <typename Sortable> void SortedVector<Sortable>::remove_or_skip(size_t index) {
-	// Testing if index is within the right range.
-	if (index < this->inner->size()) {
-		// Getting the iterator to the beginning of the vector.
-		typename std::vector<Sortable>::iterator inner_iterator = this->inner->begin();
-		// Moving the iterator to the required index.
-		std::advance(inner_iterator, index);
-		// Erasing the element under the index.
-		this->inner->erase(inner_iterator);
-	}
-	// Else we skip.
 }
 
 
