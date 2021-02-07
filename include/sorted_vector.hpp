@@ -24,6 +24,8 @@ template <typename Sortable> class SortedVector {
     std::vector<Sortable> *inner;
 
   public:
+    // Abstract destructor to avoid memory leak.
+    virtual ~SortedVector(void) = default;
     // Inserts the element into the array.
     virtual void insert(Sortable element) = 0;
     // Get the size of the array.

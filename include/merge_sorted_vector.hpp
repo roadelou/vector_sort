@@ -17,7 +17,7 @@
 #include "sorted_vector.hpp"
 
 // MergeSortedVector has the exact same API as SortedVector.
-template <typename Sortable> class MergeSortedVector : SortedVector<Sortable> {
+template <typename Sortable> class MergeSortedVector: public SortedVector<Sortable> {
   public:
     // Constructor, takes no arguments.
     MergeSortedVector(void);
@@ -27,6 +27,8 @@ template <typename Sortable> class MergeSortedVector : SortedVector<Sortable> {
     size_t get_size(void) override;
     // Returns a frozen copy of the content of the array.
     std::vector<Sortable> get_frozen(void) override;
+    // Using default destructor.
+    ~MergeSortedVector(void) {}
 };
 
 // Include implementation of the MergeSortedVector class.

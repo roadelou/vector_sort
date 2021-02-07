@@ -23,7 +23,7 @@ exec = build/sort.elf
 
 $(exec): $(src) $(head)
 	mkdir -p build
-	c++ $(src) -I include -o $(exec)
+	clang++ -std=c++17 $(src) -I include -o $(exec)
 
 clean:
 	rm -f $(exec)

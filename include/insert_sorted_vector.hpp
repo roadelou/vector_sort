@@ -20,7 +20,7 @@
 #include <vector>
 
 // A resizable array of integers sorted on insertion.
-template <typename Sortable> class InsertSortedVector: SortedVector<Sortable> {
+template <typename Sortable> class InsertSortedVector: public SortedVector<Sortable> {
   public:
     // Constructor, takes no arguments.
     InsertSortedVector(void);
@@ -30,6 +30,8 @@ template <typename Sortable> class InsertSortedVector: SortedVector<Sortable> {
     size_t get_size(void) override;
     // Returns a frozen copy of the content of the array.
     std::vector<Sortable> get_frozen(void) override;
+    // Using default destructor.
+    ~InsertSortedVector() { }
 };
 
 // Including the implementation of SortedVector in the header because this is a
