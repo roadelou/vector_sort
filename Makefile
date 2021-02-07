@@ -21,6 +21,7 @@ exec = build/sort.elf
 
 #################################### RULES #####################################
 
+# Note that C++17 is required for optional.
 $(exec): $(src) $(head)
 	mkdir -p build
 	clang++ -std=c++17 $(src) -I include -o $(exec)

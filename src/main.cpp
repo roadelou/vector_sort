@@ -18,6 +18,9 @@
 // Used for std::unique_ptr
 #include <memory>
 
+// Used for optional return
+#include <optional>
+
 // Factory to create the sorted vectors.
 #include "sorted_vector_factory.hpp"
 
@@ -26,9 +29,14 @@ int main(int argc, char **argv) {
     // Note that we use the constructor without arguments, hence no
     // parenthesis. This is different from the behavior in C, which is a bit
     // unexpected.
-    std::unique_ptr<SortedVector<int>> insert_sort_factory = make_sorted_vector<int>(std::string("insert"));
+    std::optional<std::unique_ptr<SortedVector<int>>> insert_sort_factory_option = make_sorted_vector<int>(std::string("insert"));
     // Same, but for the alternative merge sort implementation.
-    std::unique_ptr<SortedVector<int>> merge_sort_factory = make_sorted_vector<int>(std::string("merge"));
+    std::optional<std::unique_ptr<SortedVector<int>>> merge_sort_factory_option = make_sorted_vector<int>(std::string("merge"));
+
+    // Unwrapping the options here since it is safe. We need to move the
+    // unique_ptr out of the option though.
+    std::unique_ptr<SortedVector<int>> insert_sort_factory = std::move(insert_sort_factory_option.value());
+    std::unique_ptr<SortedVector<int>> merge_sort_factory = std::move(merge_sort_factory_option.value());
 
     // Iterate over the command line arguments and add them to the
     // SortedVector. We skip the first argument which is the name of the
@@ -65,6 +73,16 @@ int main(int argc, char **argv) {
     }
     // Printing final newline.
     std::cout << std::endl;
+
+    // Testing the factory with an invalid value.
+    std::optional<std::unique_ptr<SortedVector<int>>> quick_sort_option = make_sorted_vector<int>(std::string("quick"));
+    // Matching the option...
+    if (quick_sort_option) {
+    	std::cout << "Quick sort has been implemented!" << std::endl;
+    }
+    else {
+    	std::cout << "Quick sort is not implemented!" << std::endl;
+    }
 
     // Ending the process.
     return EXIT_SUCCESS;
