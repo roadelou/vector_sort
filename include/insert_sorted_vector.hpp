@@ -4,23 +4,26 @@
  * Contributors: roadelou
  * Contacts:
  * Creation Date: 2021-02-06
- * Language: Text File
+ * Language: C++
  */
 
 /************************************ BODY ************************************/
 
 // Header Guard
-#ifndef MERGE_SORTED_VECTOR_INCLUDED
-#define MERGE_SORTED_VECTOR_INCLUDED
+#ifndef INSERT_SORTED_VECTOR_INCLUDED
+#define INSERT_SORTED_VECTOR_INCLUDED
 
-// Used for inheritance.
+// Including the base class.
 #include "sorted_vector.hpp"
 
-// MergeSortedVector has the exact same API as SortedVector.
-template <typename Sortable> class MergeSortedVector : SortedVector<Sortable> {
+// Including the required headers.
+#include <vector>
+
+// A resizable array of integers sorted on insertion.
+template <typename Sortable> class InsertSortedVector: SortedVector<Sortable> {
   public:
     // Constructor, takes no arguments.
-    MergeSortedVector(void);
+    InsertSortedVector(void);
     // Inserts the element into the array.
     void insert(Sortable element) override;
     // Get the size of the array.
@@ -29,8 +32,9 @@ template <typename Sortable> class MergeSortedVector : SortedVector<Sortable> {
     std::vector<Sortable> get_frozen(void) override;
 };
 
-// Include implementation of the MergeSortedVector class.
-#include "merge_sorted_vector_implementation.hpp"
+// Including the implementation of SortedVector in the header because this is a
+// templated class.
+#include "insert_sorted_vector_implementation.hpp"
 
 // End of header guard
 #endif

@@ -1,11 +1,11 @@
 /********************************** METADATA **********************************/
 
 /*
- * Contributors: roadelou
- * Contacts:
- * Creation Date: 2021-02-06
- * Language: C++
- */
+* Contributors: roadelou
+* Contacts: 
+* Creation Date: 2021-02-07
+* Language: Text File
+*/
 
 /************************************ BODY ************************************/
 
@@ -13,29 +13,24 @@
 #ifndef SORTED_VECTOR_INCLUDED
 #define SORTED_VECTOR_INCLUDED
 
-// Including the required headers.
+// Used for std::vector
 #include <vector>
 
-// A resizable array of integers sorted on insertion.
+// Abstract base class for all the SortedVector kinds.
 template <typename Sortable> class SortedVector {
-  private:
+  // The inner vector must be accessible within the child classes.
+  protected:
     // Inner vector used by composition.
     std::vector<Sortable> *inner;
 
   public:
-    // Constructor, takes no arguments.
-    SortedVector(void);
     // Inserts the element into the array.
-    void insert(Sortable element);
+    virtual void insert(Sortable element) = 0;
     // Get the size of the array.
-    size_t get_size(void);
+    virtual size_t get_size(void) = 0;
     // Returns a frozen copy of the content of the array.
-    std::vector<Sortable> get_frozen(void);
+    virtual std::vector<Sortable> get_frozen(void) = 0;
 };
-
-// Including the implementation of SortedVector in the header because this is a
-// templated class.
-#include "sorted_vector_implementation.hpp"
 
 // End of header guard
 #endif

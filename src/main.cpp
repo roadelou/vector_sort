@@ -16,7 +16,7 @@
 #include <iostream>
 
 // The class we implemented.
-#include "sorted_vector.hpp"
+#include "insert_sorted_vector.hpp"
 
 // Alternative merge sort implementation.
 #include "merge_sorted_vector.hpp"
@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
     // Note that we use the constructor without arguments, hence no
     // parenthesis. This is different from the behavior in C, which is a bit
     // unexpected.
-    SortedVector<int> sort_factory;
+    InsertSortedVector<int> sort_factory;
     // Same, but for the alternative merge sort implementation.
     MergeSortedVector<int> merge_sort_factory;
 
