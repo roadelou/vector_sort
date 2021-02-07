@@ -38,14 +38,20 @@ int main(int argc, char **argv) {
     // Note that we use the constructor without arguments, hence no
     // parenthesis. This is different from the behavior in C, which is a bit
     // unexpected.
-    std::optional<std::unique_ptr<SortedVector<int>>> insert_sort_factory_option = make_sorted_vector<int>(std::string("insert"));
+    std::optional<std::unique_ptr<SortedVector<int>>>
+        insert_sort_factory_option =
+            make_sorted_vector<int>(std::string("insert"));
     // Same, but for the alternative merge sort implementation.
-    std::optional<std::unique_ptr<SortedVector<int>>> merge_sort_factory_option = make_sorted_vector<int>(std::string("merge"));
+    std::optional<std::unique_ptr<SortedVector<int>>>
+        merge_sort_factory_option =
+            make_sorted_vector<int>(std::string("merge"));
 
     // Unwrapping the options here since it is safe. We need to move the
     // unique_ptr out of the option though.
-    std::unique_ptr<SortedVector<int>> insert_sort_factory = std::move(insert_sort_factory_option.value());
-    std::unique_ptr<SortedVector<int>> merge_sort_factory = std::move(merge_sort_factory_option.value());
+    std::unique_ptr<SortedVector<int>> insert_sort_factory =
+        std::move(insert_sort_factory_option.value());
+    std::unique_ptr<SortedVector<int>> merge_sort_factory =
+        std::move(merge_sort_factory_option.value());
 
     // Iterate over the command line arguments and add them to the
     // SortedVector. We skip the first argument which is the name of the
@@ -61,7 +67,7 @@ int main(int argc, char **argv) {
     std::vector<int> sort_result = insert_sort_factory->get_frozen();
 
     // A bit of presentation.
-    std::cout << "SORTING ARGS" << std::endl <<std::endl;
+    std::cout << "SORTING ARGS" << std::endl << std::endl;
 
     // Outputting theresult of insertion sort.
     std::cout << "Insertion Sort: ";
@@ -87,34 +93,40 @@ int main(int argc, char **argv) {
     std::cout << std::endl;
 
     // Testing the factory with an invalid value.
-    std::optional<std::unique_ptr<SortedVector<int>>> quick_sort_option = make_sorted_vector<int>(std::string("quick"));
+    std::optional<std::unique_ptr<SortedVector<int>>> quick_sort_option =
+        make_sorted_vector<int>(std::string("quick"));
 
     // A bit of presentation.
     std::cout << std::endl << "TESTING QUICKSORT" << std::endl << std::endl;
 
     // Matching the option...
     if (quick_sort_option) {
-    	std::cout << "Quick sort has been implemented!" << std::endl;
-    }
-    else {
-    	std::cout << "Quick sort is not implemented!" << std::endl;
+        std::cout << "Quick sort has been implemented!" << std::endl;
+    } else {
+        std::cout << "Quick sort is not implemented!" << std::endl;
     }
 
     // Creating an array of random numbers for benchmark.
     std::array<unsigned int, 1000> numbers = random_numbers();
-    
+
     // Creating two sorted vectors.
-    std::unique_ptr<SortedVector<unsigned int>> insert_factory = make_sorted_vector<unsigned int>(std::string("insert")).value();
-    std::unique_ptr<SortedVector<unsigned int>> merge_factory = make_sorted_vector<unsigned int>(std::string("merge")).value();
+    std::unique_ptr<SortedVector<unsigned int>> insert_factory =
+        make_sorted_vector<unsigned int>(std::string("insert")).value();
+    std::unique_ptr<SortedVector<unsigned int>> merge_factory =
+        make_sorted_vector<unsigned int>(std::string("merge")).value();
 
     // Benchmarking the insertion sort.
-    std::chrono::microseconds insert_timing = performance_sorted_vector(insert_factory, numbers);
-    std::chrono::microseconds merge_timing = performance_sorted_vector(merge_factory, numbers);
+    std::chrono::microseconds insert_timing =
+        performance_sorted_vector(insert_factory, numbers);
+    std::chrono::microseconds merge_timing =
+        performance_sorted_vector(merge_factory, numbers);
 
     // Printing the two benchmarks.
     std::cout << std::endl << "BENCHMARK" << std::endl << std::endl;
-    std::cout << "Insertion: " << insert_timing.count() << " microseconds" << std::endl;
-    std::cout << "Merge: " << merge_timing.count() << " microseconds" << std::endl;
+    std::cout << "Insertion: " << insert_timing.count() << " microseconds"
+              << std::endl;
+    std::cout << "Merge: " << merge_timing.count() << " microseconds"
+              << std::endl;
 
     // Conclusion message.
     std::cout << std::endl << "EXECUTION COMPLETE" << std::endl;

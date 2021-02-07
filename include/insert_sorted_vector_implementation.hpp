@@ -18,9 +18,9 @@
 // #include "sorted_vector.hpp"
 // NOTE
 // ====
-// The reason why we moved the implementation of InsertSortedVector to a header is
-// that "The implementation of a non-specialized template must be visible to a"
-// "translation unit that uses it."
+// The reason why we moved the implementation of InsertSortedVector to a header
+// is that "The implementation of a non-specialized template must be visible to
+// a" "translation unit that uses it."
 //
 // (source: https://stackoverflow.com/a/10632266)
 //
@@ -39,12 +39,14 @@
 #include <iterator>
 
 // Constructor implementation.
-template <typename Sortable> InsertSortedVector<Sortable>::InsertSortedVector(void) {
+template <typename Sortable>
+InsertSortedVector<Sortable>::InsertSortedVector(void) {
     // Creating inner vector.
     this->inner = new std::vector<Sortable>();
 }
 
-template <typename Sortable> void InsertSortedVector<Sortable>::insert(Sortable element) {
+template <typename Sortable>
+void InsertSortedVector<Sortable>::insert(Sortable element) {
     // The iterator used to insert our element.
     typename std::vector<Sortable>::iterator inner_iterator =
         this->inner->begin();
@@ -59,7 +61,8 @@ template <typename Sortable> void InsertSortedVector<Sortable>::insert(Sortable 
     this->inner->insert(inner_iterator, element);
 }
 
-template <typename Sortable> size_t InsertSortedVector<Sortable>::get_size(void) {
+template <typename Sortable>
+size_t InsertSortedVector<Sortable>::get_size(void) {
     // Calling the appropriate std::vector function.
     return this->inner->size();
 }

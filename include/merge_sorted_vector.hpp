@@ -17,7 +17,8 @@
 #include "sorted_vector.hpp"
 
 // MergeSortedVector has the exact same API as SortedVector.
-template <typename Sortable> class MergeSortedVector: public SortedVector<Sortable> {
+template <typename Sortable>
+class MergeSortedVector : public SortedVector<Sortable> {
   public:
     // Constructor, takes no arguments.
     MergeSortedVector(void);

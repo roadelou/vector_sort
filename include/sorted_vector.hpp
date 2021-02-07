@@ -1,11 +1,11 @@
 /********************************** METADATA **********************************/
 
 /*
-* Contributors: roadelou
-* Contacts: 
-* Creation Date: 2021-02-07
-* Language: Text File
-*/
+ * Contributors: roadelou
+ * Contacts:
+ * Creation Date: 2021-02-07
+ * Language: Text File
+ */
 
 /************************************ BODY ************************************/
 
@@ -18,7 +18,7 @@
 
 // Abstract base class for all the SortedVector kinds.
 template <typename Sortable> class SortedVector {
-  // The inner vector must be accessible within the child classes.
+    // The inner vector must be accessible within the child classes.
   protected:
     // Inner vector used by composition.
     std::vector<Sortable> *inner;
